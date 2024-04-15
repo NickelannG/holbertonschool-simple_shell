@@ -1,0 +1,12 @@
+#include <stdio.h>
+/**
+ * main - print all args without argc
+ * @argc: void
+ * @argv: argument vector
+ * Return: all args
+ */
+int main(int __attribute__((unused)) argc, char **argv)
+{
+printf("%s\n", *argv);
+return (0);
+}
