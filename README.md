@@ -102,4 +102,4 @@ After the deadline, you will need to fork the repository if it's not on your Git
 ### :sparkles: Simple Shell Dream Team :sparkles:
 - Carole Zenruffinen
 - Khang Nguyen
-- Nicole Anne Gorospe
+- Nicole Ann Gorospe
