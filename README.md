@@ -100,6 +100,6 @@ The Checker will be released at the end of the project (1-2 days before the dead
 After the deadline, you will need to fork the repository if it's not on your Github account to be able to be corrected by the checker.
 
 ### :sparkles: Simple Shell Dream Team :sparkles:
-- Carole Zenruffinen
-- Khang Nguyen
-- Nicole Ann Gorospe
+- [Carole Zenruffinen] (https://github.com/crlzr)
+- [Khang Nguyen] (https://github.com/kdn95)
+- [Nicole Ann Gorospe] (https://github.com/NickelannG)
