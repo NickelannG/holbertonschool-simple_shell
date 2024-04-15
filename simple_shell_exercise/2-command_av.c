@@ -1,19 +1,25 @@
 #include "ss_lib.h"
+
 /**
- *
+ * main - prototype
+ * Return: 0 
  */
-int main (int argc, char *argv[])
+int main(void)
 {
-(void)argc;
-char *str = argv[1];
-char *delim = " ";
+char *buffer = malloc(1024);
+size_t len = 1024;
 char *token;
-int i = 0;
-while (str[i] != '\0')
+while (1)
 {
-token = strtok(str, delim);
+printf("$ ");
+getline(&buffer, &len, stdin);
+printf("%s", buffer);
+token = strtok(buffer, " ");
+while (token)
+{
 printf("%s\n", token);
-i++;
+token = strtok(NULL, " ");
+}
 }
 return (0);
 }
