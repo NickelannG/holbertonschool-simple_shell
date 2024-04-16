@@ -1,9 +1,13 @@
 #include "ss_lib.h"
 
 /**
+ * Description - executes the command ls -l /tmp in 5 different child processes
+ * where each child is created by the same parent process and waits for a
+ * child process to exit before creating a new child
  *
+ * main - entry point 
  *
- *
+ * Return: always 0 
  */
 
 int main(void)
