@@ -16,7 +16,7 @@ int main(void)
 
 	if (buffer == NULL)
 	{
-		printf("Error: failed to allocate memory\n");
+		perror("Error: failed to allocate memory");
 		return (1);
 	}
 
@@ -25,7 +25,7 @@ int main(void)
 		printf("$ ");
 		if (getline(&buffer, &len, stdin) == -1)
 		{
-			printf("Error: failed to read input\n");
+			perror("Error: failed to read input");
 			free(buffer);
 			return (1);
 		}
@@ -53,8 +53,7 @@ int main(void)
 			if (execve(args[0], args, NULL) == -1)
 			{
 				perror("Error: execute failed");
-				free(buffer);
-				return (1);
+				exit (EXIT_FAILURE);
 			}
 		}
 		else
