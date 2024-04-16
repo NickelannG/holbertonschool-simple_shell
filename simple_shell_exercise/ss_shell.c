@@ -1,72 +1,71 @@
-#include "shell_exercise.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
 
-/**
- *
- *
- *
- */
+#define MAX_COMMAND_LENGTH 100
 
-int main(void)
-{
-	char *buffer = malloc(1024);
-	size_t len = 1024;
-	char *token;
-	char *args[10];
-	int j;
+int main() {
+    char *command = NULL; /* Dynamically allocated buffer for user input */
+    size_t len = 0; /* Length of the input buffer */
+    char *args[] = { NULL }; /* No arguments for now */
+    pid_t pid;
+    int status;
+    int i = 0; /* Just to remove newline character */
 
-	if (buffer == NULL)
+    while (1) {
+        printf("$ ");
+        fflush(stdout);
+
+        /* Read a line of input from the user */
+        if (getline(&command, &len, stdin) == -1)
 	{
-		perror("Error: failed to allocate memory");
-		return (1);
+            /* Handle EOF (Ctrl+D) */
+            printf("\n");
+            free(command); /* Free dynamically allocated memory */
+            break;
+        }
+	
+	/* Remove trailing newline character from user input */
+	while (command[i] != '\n' && command[i] != '\0') 
+	{
+		i++;
+	}
+	if (command[i] == '\n') 
+	{
+		command[i] = '\0';
 	}
 
-	while (1)
-	{
-		printf("$ ");
-		if (getline(&buffer, &len, stdin) == -1)
-		{
-			perror("Error: failed to read input");
-			free(buffer);
-			return (1);
-		}
-		token = strtok(buffer, " ");
-		j = 0;
-		
-		while (token)
-		{
-			args[j++] = token;
-			token = strtok(NULL, " ");
-		}
-		args[j] = NULL;
-		
-		pid_t pid;
-		pid = fork();
-		
-		if (pid == -1)
-		{
-			perror("Error: fork failed");
-			free(buffer);
-			return (1);
-		}
-		else if (pid == 0)
-		{
-			if (execve(args[0], args, NULL) == -1)
-			{
-				perror("Error: execute failed");
-				exit (EXIT_FAILURE);
-			}
-		}
-		else
-		{
-			wait(NULL);
-		}
+        /* Fork a child process */
+        pid = fork();
 
-		int i = 0;
-		while ( i < 10)
-		{
-			args[i++] = NULL;
-		}
-	}
-	free (buffer);
-	return (0);
+        if (pid == -1) 
+	{
+            /* Fork failed */
+            perror("fork");
+            exit(EXIT_FAILURE);
+        } 
+	else if (pid == 0) 
+	{
+            /* Child process */
+            if (execv(command, args) == -1) 
+	    {
+                perror("execv");
+                exit(EXIT_FAILURE);
+            }
+        } 
+	else 
+	{
+            /* Parent process */
+            /* Wait for the child to terminate */
+            if (wait(&status) == -1) 
+	    {
+                perror("wait");
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
+
+    return 0;
 }
