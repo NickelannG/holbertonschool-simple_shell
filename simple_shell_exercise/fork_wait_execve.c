@@ -22,6 +22,7 @@ int main(void)
 		if (pid == 0)
 		{
 			char *array[] = {"/bin/ls", "-l", "/tmp", NULL};
+			printf("Child process %d started\n", i);
 			execve(array[0], array, NULL);
 			exit (1);
 		 }
