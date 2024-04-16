@@ -10,9 +10,10 @@ int main() {
     char *command = NULL; /* Dynamically allocated buffer for user input */
     size_t len = 0; /* Length of the input buffer */
     char *args[] = { NULL }; /* No arguments for now */
+    char *delimeter = " \n";
+    char *token;
     pid_t pid;
     int status;
-    int i = 0; /* Just to remove newline character */
 
     while (1) {
         printf("$ ");
@@ -27,15 +28,16 @@ int main() {
             break;
         }
 	
-	/* Remove trailing newline character from user input */
-	while (command[i] != '\n' && command[i] != '\0') 
+	/* Tokenize the command string */
+        int argc = 0;
+        token = strtok(command, delimeter); /* Tokenize first */
+        while (token != NULL && argc < MAX_COMMAND_LENGTH) 
 	{
-		i++;
-	}
-	if (command[i] == '\n') 
-	{
-		command[i] = '\0';
-	}
+            args[argc++] = token; /* Store token in arguments array */
+            token = strtok(NULL, delimeter); /* Get next token */
+        }
+        args[argc] = NULL; /* Set the last argument to NULL (required by execv) */
+
 
         /* Fork a child process */
         pid = fork();
