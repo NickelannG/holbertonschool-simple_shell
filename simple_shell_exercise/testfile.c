@@ -35,7 +35,7 @@ int main(void) {
         // Fork and execute each command
         pid_t pid;
         int i = 0;
-        while (i < 5 && args[0] != NULL) {
+        while (i < 1 && args[0] != NULL) {
             pid = fork();
             if (pid == -1) {
                 perror("fork");

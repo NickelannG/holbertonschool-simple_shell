@@ -13,16 +13,20 @@ int main(void)
 	char *token;
 	char *args[10];
 	int j = 0;
+	ssize_t _getline;
 	char *envp[] = {"/bin/ls", NULL};
 
 	while (1)
 	{
-	printf("$ ");
-	getline(&buffer, &len, stdin);
-	token = strtok(buffer, " ");
-	exit (1);
+		printf("$ ");
+		_getline = getline(&buffer, &len, stdin);
+		if (_getline == -1)
+		{
+			exit (1);
+		}
+		token = strtok(buffer, " ");
 	}
-	while (token)
+	while (token != NULL && j < 10)
 	{
 	args[j++] = token;
 	token = strtok(NULL, " ");
@@ -51,7 +55,7 @@ int main(void)
                         wait(NULL);
                 }
 		i++;
-        }     
+	}	
 	free (buffer);
 	return (0);
 }
