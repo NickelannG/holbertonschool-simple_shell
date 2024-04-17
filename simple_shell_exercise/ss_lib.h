@@ -7,4 +7,6 @@
 #include <string.h>
 #include <sys/wait.h>
 
+char *_getenv(const char *name);
+
 #endif
