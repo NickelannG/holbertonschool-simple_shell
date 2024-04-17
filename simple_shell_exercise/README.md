@@ -13,7 +13,7 @@ Write a program that prints the PID of the parent process. Run your program seve
 Write a shell script that prints the maximum value a process ID can be.</li>
 </ol>
 
-<u>Arguments</u>
+### Arguments
 <ol start="0">
 <li> av
 Write a program that prints all the arguments, without using ac.</li>
@@ -31,7 +31,7 @@ Write a program that prints "$ ", wait for the user to enter a command, prints i
 <br>Write a program that looks for files in the current PATH.
 <br> Usage: _which filename ...
 
-<u>Environement</u>
+<u>Environment</u>
 <ol start="0">
 <li>printenv with environ
 Write a program that prints the environment using the global variable environ.</li>
