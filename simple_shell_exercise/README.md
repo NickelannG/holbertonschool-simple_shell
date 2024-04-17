@@ -13,7 +13,7 @@ Write a program that prints the PID of the parent process. Run your program seve
 Write a shell script that prints the maximum value a process ID can be.</li>
 </ol>
 
-**Arguments**
+<u>Arguments</u>
 <ol start="0">
 <li> av
 Write a program that prints all the arguments, without using ac.</li>
@@ -21,17 +21,17 @@ Write a program that prints all the arguments, without using ac.</li>
 Write a program that prints "$ ", wait for the user to enter a command, prints it on the next line.</li>
 </ol>
 
-**Fork, wait and execve**
+<u>Fork, wait and execve</u>
 <br>Write a program that executes the command ls -l /tmp in 5 different child processes. Each child should be created by the same process (the father). Wait for a child to exit before creating a new child.
 
-**Super Simple Shell**
+<u>Super Simple Shell</u>
 <br>Using everything we saw, write a first version of a super simple shell that can run commands with their full path, without any argument.
 
-**Find a file in the PATH**
+<u>Find a file in the PATH</u>
 <br>Write a program that looks for files in the current PATH.
-- Usage: _which filename ...
+<br> Usage: _which filename ...
 
-**Environement**
+<u>Environement</u>
 <ol start="0">
 <li>printenv with environ
 Write a program that prints the environment using the global variable environ.</li>
@@ -39,17 +39,17 @@ Write a program that prints the environment using the global variable environ.</
 Write a program that prints the address of env (the third parameter of the main function) and environ (the global variable). Are they they same? Does this make sense?</li>
 <li>getenv()
 Write a function that gets an environment variable. (without using getenv)
-- Prototype: char *_getenv(const char *name);</li>
+<br>Prototype: char *_getenv(const char *name);</li>
 <li>PATH
 Write a function that prints each directory contained in the the environment variable PATH, one directory per line.</li>
 <li>PATH
 Write a function that builds a linked list of the PATH directories.</li>
 <li>setenv
 Write a function that changes or adds an environment variable (without using setenv).
-- Prototype: int _setenv(const char *name, const char *value, int overwrite);</li>
+<br>Prototype: int _setenv(const char *name, const char *value, int overwrite);</li>
 <li>unsetenv
 Write a function that deletes the variable name from the environment (without using unsetenv).
-- Prototype: int _unsetenv(const char *name);</li>
+<br>Prototype: int _unsetenv(const char *name);</li>
 </ol>
 
 ### :sparkles: Simple Shell Dream Team :sparkles:
