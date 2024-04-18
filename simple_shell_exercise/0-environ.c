@@ -10,12 +10,10 @@ extern char **environ;
  */
 int main ()
 {
-	char **env = environ;
-
-	while (*env != NULL)
+	while (*environ != NULL)
 	{
-		printf("%s\n", *env);
-		env++;
+		printf("%s\n", *environ);
+		environ++;
 	}
 	return (0);
 }
