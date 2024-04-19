@@ -1,4 +1,17 @@
 # C -  Simple Shell
+
+# Table of Contents
+1. [Description](#description)
+2. [Output](#output)
+3. [List of allowed functions and system calls+](#list of allowed functions and system calls)
+4. [Compilation](#Compilation)
+5. [Testing](#testing)
+6. [Checks](#checks)
+7. [:sparkles: Simple Shell Dream Team :sparkles:](#:sparkles: Simple Shell Dream Team :sparkles:)
+
+## Description
+This program is a custom implementation of the command language interpreter SHELL. It was created as part of the final group project for sprint 1 Holberton School Australia Cohort 23.
+
 ## Output
 - Unless specified otherwise, your program **must have the exact same output as** ```sh (/bin/sh)``` as well as the exact same error output.
 - The only difference is when you print an error, the name of the program must be equivalent to your ```argv[0]``` (See below)
@@ -60,6 +73,35 @@ $
 - ```wait3``` (man 2 wait3)
 - ```wait4``` (man 2 wait4)
 - ```write``` (man 2 write)
+
+## Installation
+To install this program, clone this repository using the git clone command as shown below.
+```bash
+git clone https://github.com/kdn95/holbertonschool-simple_shell.git
+```
+
+## Usage 
+**1. Create a source file**<br>
+Create a main.c file and include the 'main.h' header file. Call the '_printf' function with the desired format string and arguments
+
+**2. Compilation**<br>
+Compile the program using a c compiler. For example, we have used GCC:
+```C
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+```
+This will compile all the '.c' files in the directory into an exectuable named printf 
+
+**3. Run the program**<br>
+After compiling the program, you can run it from the command line:
+```bash
+./hsh
+```
+
+Example of main.c file: 
+```C
+
+```
+
 ## Compilation
 Your shell will be compiled this way:
 
