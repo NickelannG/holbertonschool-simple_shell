@@ -3,11 +3,11 @@
 # Table of Contents
 1. [Description](#description)
 2. [Output](#output)
-3. [List of allowed functions and system calls+](#list of allowed functions and system calls)
+3. [List of allowed functions and system calls](#list of allowed functions and system calls+)
 4. [Compilation](#Compilation)
 5. [Testing](#testing)
 6. [Checks](#checks)
-7. [:sparkles: Simple Shell Dream Team :sparkles:](#:sparkles: Simple Shell Dream Team :sparkles:)
+7. [Simple Shell Dream Team](#:sparkles: Simple Shell Dream Team :sparkles:)
 
 ## Description
 This program is a custom implementation of the command language interpreter SHELL. It was created as part of the final group project for sprint 1 Holberton School Australia Cohort 23.
