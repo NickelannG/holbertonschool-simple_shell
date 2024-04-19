@@ -1,0 +1,43 @@
+.TH Manpage for Shell.
+.SH NAME
+    Simple Shell
+.SH SYNOPSIS
+    .B ssh
+    [command] [options ...]
+.SH DESCRIPTION
+    Simple shell is a command language interpreter that executes commands read from the standard input or from a file.
+.SH EXAMPLES
+
+    To run the "ls" command.
+    Where "($)" is the prompt.
+
+    in interactive mode:
+    $ ./hsh // To run the simple shell.
+    ($) /bin/ls // The path to run the "ls" command.
+    hsh main.c shell.c // The output.
+    ($)
+    ($) exit // To exit the simple shell
+    $
+
+    in non-interactive mode:
+    $ echo "/bin/ls" | ./hsh // To connect the output of the ls command to the input of the simple shell.
+    hsh main.c shell.c test_ls_2  // The output of the program.
+    $
+
+.SH SEE ALSO
+    man sh (1)
+.SH BUGS
+    .B Incorrect Command Syntax: 
+     Errors in the documentation regarding the syntax of shell commands can lead to misunderstandings or incorrect usage by users.
+     Misleading Descriptions: 
+     Descriptions of shell commands or features that are unclear, ambiguous, or misleading can cause confusion for users trying to understand how to use them.
+    .B Inconsistent Behavior: 
+     If the documented behavior of a shell command does not match its actual behavior, this can lead to frustration and unexpected results for users.
+    .B Undocumented Features or Options: 
+    Shell commands may have features or options that are not properly documented, leading users to overlook useful functionality or use it incorrectly.
+
+.SH AUTHOR
+   Carole Zen-Ruffinen
+   Khang Nguyen
+   Nicole Ann Gorospe
+
