@@ -14,6 +14,8 @@ extern char **environ;
 void changeEnvVar(const char *name, const char *value) 
 {
 	unsigned int i;
+	char *temp, *token, *final;
+	int j;
 
 	if (name == NULL || value == NULL)
         return;
@@ -21,13 +23,20 @@ void changeEnvVar(const char *name, const char *value)
 	i = 0;
 	while (environ[i] != NULL) 
 	{
-		temp = malloc(strlen(env[i]) + 1);
-		strcpy(temp,env[i]);
+		temp = strdup(environ[i]);
+		if (temp == NULL) /* if memory allocation failed */
+			return;
 
 		token = strtok(environ[i], "=");
 		if (strcmp(token, name) == 0) 
 		{
 			final = malloc(strlen(token) + strlen("=") +  strlen(myvalue) + 1);
+			if (final == NULL)
+			{
+				free(temp);
+				return;
+			}
+
 			strcpy(final, token);
 			strcat(final, "=");
 			strcat(final, myvalue);
@@ -35,8 +44,8 @@ void changeEnvVar(const char *name, const char *value)
 			env[i] =  final;
 			j = i;
 		}
-		i++;
 		free(temp);
+		i++;
 	}
 
 
@@ -51,6 +60,10 @@ void changeEnvVar(const char *name, const char *value)
 
 void addEnvVar(const char *name, const char *value) 
 {
+	int num_vars;
+	char **new_environ;
+	int i, j;
+
     if (name == NULL || value == NULL)
         return;
 
