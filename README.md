@@ -10,7 +10,7 @@
 7. [Simple Shell Dream Team](#sparkles-simple-shell-dream-team-sparkles)
 
 ## Description
-This program is a custom implementation of the command language interpreter SHELL. It was created as part of the final group project for sprint 1 Holberton School Australia Cohort 23.
+This program is a custom implementation of the SHELL command line language interpreter. It was created as part of the final group project for sprint 1 Holberton School Australia Cohort 23.
 
 ## Output
 - Unless specified otherwise, your program **must have the exact same output as** ```sh (/bin/sh)``` as well as the exact same error output.
@@ -81,25 +81,23 @@ git clone https://github.com/kdn95/holbertonschool-simple_shell.git
 ```
 
 ## Usage 
-**1. Create a source file**<br>
-Create a main.c file and include the 'main.h' header file. Call the '_printf' function with the desired format string and arguments
-
-**2. Compilation**<br>
+**1. Compilation**<br>
 Compile the program using a c compiler. For example, we have used GCC:
 ```C
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
-This will compile all the '.c' files in the directory into an exectuable named printf 
+This will compile all the '.c' files in the directory into an exectuable named hsh
 
-**3. Run the program**<br>
-After compiling the program, you can run it from the command line:
+**2. Run the program**<br>
+After compiling all the files, you can run the program from the command line:
 ```bash
 ./hsh
 ```
 
-Example of main.c file: 
-```C
-
+**3. User Prompt**<br>
+A ```$``` should be displayed, awaiting for a user command input:
+```bash
+$ [user command input]
 ```
 
 ## Compilation
