@@ -8,7 +8,6 @@
  */
 void parse_command(char *command, char *args[])
 {
-size_t len = 0;
 char *delimeter = " \n";
 char *token;
 int argc = 0;
@@ -64,11 +63,11 @@ int main(void)
 {
 char *command = NULL;
 char *args[MAX_COMMAND_LENGTH + 1] = {NULL};
+size_t len = 0;
 while (1)
 {
 printf("$ ");
 fflush(stdout);
-size_t len = 0;
 if (getline(&command, &len, stdin) == -1)
 {
 printf("\n");
