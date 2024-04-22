@@ -29,6 +29,7 @@ args[argc] = NULL;
  */
 void execute_command(char *command, char *args[])
 {
+extern char **environ;
 pid_t pid;
 int status;
 pid = fork();
@@ -39,7 +40,7 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-if (execve(command, args, NULL) == -1)
+if (execve(command, args, environ) == -1)
 {
 perror("execve");
 exit(EXIT_FAILURE);
