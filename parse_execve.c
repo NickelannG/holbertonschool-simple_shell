@@ -31,6 +31,7 @@ void execute_command(char *command, char *args[])
 {
 pid_t pid;
 int status;
+char *envp[] = {NULL};
 pid = fork();
 if (pid == -1)
 {
@@ -39,9 +40,9 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-if (execvp(command, args) == -1)
+if (execve(command, args, envp) == -1)
 {
-perror("execvp");
+perror("execve");
 exit(EXIT_FAILURE);
 }
 }
