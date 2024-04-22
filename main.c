@@ -28,7 +28,7 @@ free(command);
 }
 else
 {
-non_interactive_mode();
+non_interactive_mode(FILE *input_file);
 }
 free(command);
 return (0);

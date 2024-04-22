@@ -7,6 +7,9 @@
 #include <string.h>
 #include <sys/wait.h>
 
+void parse_command(char *command, char *args[]);
+void execute_command(char *command, char *args[]);
+void non_interactive_mode(FILE *input_file);
 
 
 #endif
