@@ -32,6 +32,11 @@ void execute_command(char *command, char *args[])
 extern char **environ;
 pid_t pid;
 int status;
+if (command == NULL)
+{
+return;
+}
+     
 pid = fork();
 if (pid == -1)
 {
