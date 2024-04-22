@@ -1,5 +1,25 @@
 #include "ssh_header.h"
+#include <ctype.h>
+#include <string.h>
 #define MAX_COMMAND_LENGTH 100
+/**
+ * strtrim - to remove unwanted whitespaces
+ * @str: the string entered to be trimmed
+ */
+void strtrim(char *str)
+{
+char *end, *start = str;
+while (isspace(*start))
+{
+start++;
+}
+end = str + strlen(str) - 1;
+while (end > start && isspace(*end))
+{
+end--;
+}
+*(end + 1) = '\0';
+}
 /**
  * non_interactive_mode - non-interactive mode
  * @input_file: file name entered
@@ -14,6 +34,7 @@ while ((read = getline(&command, &len, stdin)) != -1)
 {
 if (command[read - 1] == '\n')
 command[read - 1] = '\0';
+strtrim(command);
 parse_command(command, args);
 execute_command(args[0], args);
 free(command);
