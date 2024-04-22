@@ -16,6 +16,8 @@ if (command[read - 1] == '\n')
 command[read - 1] = '\0';
 parse_command(command, args);
 execute_command(args[0], args);
+free(command);
+command = NULL;
 }
 free(command);
 }

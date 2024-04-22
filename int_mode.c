@@ -22,6 +22,6 @@ break;
 }
 parse_command(command, args);
 execute_command(args[0], args);
-free(command);
 }
+free(command);
 }
