@@ -1,5 +1,6 @@
 #ifndef _SS_LIB_H
 #define _SS_LIB_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -9,7 +10,7 @@
 
 void parse_command(char *command, char *args[]);
 void execute_command(char *command, char *args[]);
-void non_interactive_mode(FILE *input_file);
-
+void non_interactive_mode();
+void interactive_mode(void);
 
 #endif

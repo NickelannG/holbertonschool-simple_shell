@@ -1,5 +1,5 @@
 #include "ssh_header.h"
-#define MAX_COMMAND_LENGTH 100
+11;rgb:2b2b/2b2b/2b2b#define MAX_COMMAND_LENGTH 100
 /**
  * main - simple shell interative entry point
  * Return: Always 0 (Success)
@@ -8,7 +8,7 @@ int main(void)
 {
 if (isatty((STDIN_FILENO) == 1))
 {
-interactive_mode();
+  interative_mode();
 }
 else
 {
