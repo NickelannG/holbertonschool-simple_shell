@@ -13,6 +13,6 @@ void parse_command(char *command, char *args[]);
 void execute_command(char *command, char *args[]);
 void non_interactive_mode();
 void interactive_mode(void);
-void find_path(char *final);
+char *find_path(char *final);
 
 #endif
