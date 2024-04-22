@@ -1,4 +1,5 @@
 #include "ssh_header.h"
+#define MAX_COMMAND_LENGTH 100
 /**
  * main - simple shell interative entry point
  * Return: Always 0 (Success)
@@ -27,7 +28,8 @@ free(command);
 }
 else
 {
-non_interactive();
+non_interactive_mode();
 }
+free(command);
 return (0);
 }
