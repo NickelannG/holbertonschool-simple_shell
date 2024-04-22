@@ -21,6 +21,44 @@ token = strtok(NULL, delimeter);
 args[argc] = NULL;
 }
 
+void find_path(char *final)
+{
+char *pathvar = getenv("PATH");
+ char *token, *cmd = "/ls";
+    struct stat st;
+
+    if (pathvar == NULL) 
+    {
+        fprintf(stderr, "Error: PATH environment variable not found\n");
+        return;
+    }
+
+    token = strtok(pathvar, ":");
+    while (token != NULL) 
+    {
+        final = malloc(strlen(token) + strlen(cmd) + 1);
+        if (final == NULL) 
+	{
+            fprintf(stderr, "Error: Memory allocation failed\n");
+            return;
+        }
+        strcpy(final, token);
+        strcat(final, cmd);
+
+        printf("Status of %s: ", final);
+        if (stat(final, &st) == -1) 
+	{
+	  fprintf(stderr, "Error: PATH environment variable not found\n");
+	  free(final);
+        }
+	else 
+	{
+	  return;
+        }
+        token = strtok(NULL, ":");
+    }
+}
+
 /**
  * execute_command - to execute new process
  * by replacing the previous
@@ -36,7 +74,7 @@ if (command == NULL)
 {
 return;
 }
-     
+find_path(command);
 pid = fork();
 if (pid == -1)
 {
