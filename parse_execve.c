@@ -11,6 +11,7 @@ void parse_command(char *command, char *args[])
 char *delimeter = " \n";
 char *token;
 int argc = 0;
+
 token = strtok(command, delimeter);
 while (token != NULL && argc < MAX_COMMAND_LENGTH)
 {
@@ -28,6 +29,7 @@ args[argc] = NULL;
 void execute_command(char *command, char *args[])
 {
 extern char **environ;
+char *command_path = "/bin/ls";
 pid_t pid;
 int status;
 if (command == NULL)
@@ -43,8 +45,10 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-if (execve(command, args, environ) == -1)
+args[0] = command_path;
+if (execve(command_path, args, environ) == -1)
 {
+fprintf(stderr, "Failed to execute command: %s\n", command);
 perror("execve");
 exit(EXIT_FAILURE);
 }
