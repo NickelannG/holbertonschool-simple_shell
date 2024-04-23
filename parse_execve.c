@@ -20,16 +20,47 @@ token = strtok(NULL, delimeter);
 }
 args[argc] = NULL;
 }
+
+/**
+ * description - gets an environment variable without using getenv
+ * main - entry point
+ * @name: a NULL terminated string containing the name of the environment
+ * variable
+ *
+ * Return: a pointer to the value string, or -1 if it failed
+ */
+char *_getenv(const char *name)
+{
+	extern char **environ;
+	char *token;
+	int i = 0;
+
+	while (environ[i] != NULL)
+	{
+		token = strtok(environ[i], "=");
+
+		if (strcmp(token, name) == 0) /* match */
+		{
+			token = strtok(NULL, "61");
+			return (token);
+		}
+		token = strtok(NULL, "=");
+		i++;
+	}
+	return (NULL); /* Variable not found */
+}
+
 /**
  * execute_command - to execute new process
  * by replacing the previous
  * @command: the path of the command
  * @args: command arguments or flags
  */
+
 void execute_command(char *command, char *args[])
 {
 extern char **environ;
-char *command_path = "/bin/ls";
+char *command_path = _getenv("PATH");
 pid_t pid;
 int status;
 if (command == NULL)
