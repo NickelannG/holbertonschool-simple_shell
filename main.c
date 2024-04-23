@@ -10,9 +10,13 @@ if (isatty((STDIN_FILENO) == 1))
 {
 interactive_mode();
 }
-else
+else if
 {
 non_interactive_mode();
+}
+else
+{
+exit(1);
 }
 return (0);
 }
