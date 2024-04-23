@@ -29,15 +29,13 @@ args[argc] = NULL;
 void execute_command(char *command, char *args[])
 {
 extern char **environ;
-char command_path[] = {"/bin/ls", " ", ;
+char *command_path = "/bin/ls";
 pid_t pid;
 int status;
 if (command == NULL)
 {
 return;
 }
-if (command_path == NULL)
-	exit(EXIT_FAILURE);
 
 pid = fork();
 if (pid == -1)
