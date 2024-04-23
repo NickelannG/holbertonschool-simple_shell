@@ -14,6 +14,8 @@ char *delimeter = " \n";
     char *token;
     int argc = 0;
 
+    trim_spaces(command);
+
     if (command == NULL || *command == '\0' || *command == '\n') {
         fprintf(stderr, "Empty command\n");
         return;
@@ -38,6 +40,30 @@ char *delimeter = " \n";
     }
 
     args[argc] = NULL; /* Ensure the args array is properly null-terminated */
+}
+
+/**
+ * trim_spaces - trims spaces
+ * Return: -
+ */
+
+void trim_spaces(char *str) {
+    char *end;
+
+    while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\r') {
+        str++;
+    }
+
+    if (*str == '\0') {
+        return;
+    }
+
+    end = str + strlen(str) - 1;
+    while (end > str && (*end == ' ' || *end == '\t' || *end == '\n' || *end == '\r')) {
+        end--;
+    }
+
+    *(end + 1) = '\0';
 }
 
 /**

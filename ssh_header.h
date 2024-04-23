@@ -17,5 +17,6 @@ void execute_command(char *command, char *args[]);
 void interactive_mode(void);
 void non_interactive_mode(void);
 char *find_path(char *command);
+void trim_spaces(char *str);
 
 #endif
