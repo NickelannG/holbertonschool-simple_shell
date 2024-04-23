@@ -80,6 +80,7 @@ char *_getenv(const char *name)
 
 void execute_command(char *command, char *args[])
 {
+	extern char **environ;
     if (command == NULL)
     {
         return;
@@ -99,12 +100,10 @@ void execute_command(char *command, char *args[])
     }
     else if (pid == 0)
     {
-        if (execvp(command, args) == -1)
-        {
-            fprintf(stderr, "Failed to execute command: %s\n", command);
-            perror("execvp");
-            exit(EXIT_FAILURE);
-        }
+        execve(command, args, environ);
+        // execve only returns if there is an error
+        perror("execve");
+        exit(EXIT_FAILURE);
     }
     else
     {
