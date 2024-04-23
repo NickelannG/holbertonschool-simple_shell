@@ -63,7 +63,12 @@ extern char **environ;
 char *command_path = _getenv("PATH");
 pid_t pid;
 int status;
-if (command == NULL)
+
+if (strcmp(command, "exit") == 0) 
+{
+exit(EXIT_SUCCESS);
+}
+if (command == NULL || command_path == NULL)
 {
 return;
 }
@@ -76,7 +81,7 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-args[0] = command_path;
+/* args[0] = command_path; */
 if (execve(command_path, args, environ) == -1)
 {
 fprintf(stderr, "Failed to execute command: %s\n", command);
