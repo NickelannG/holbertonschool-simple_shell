@@ -63,38 +63,51 @@ extern char **environ;
 char *command_path = _getenv("PATH");
 pid_t pid;
 int status;
+char *ls_path;
 
 if (strcmp(command, "exit") == 0) 
 {
-exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 if (command == NULL || command_path == NULL)
 {
-return;
+	return;
 }
 
 pid = fork();
 if (pid == -1)
 {
-perror("fork");
-exit(EXIT_FAILURE);
+	perror("fork");
+	exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-/* args[0] = command_path; */
-if (execve(command_path, args, environ) == -1)
+	/* args[0] = command_path; */
+if(strcmp(command, "ls") == 0)
 {
-fprintf(stderr, "Failed to execute command: %s\n", command);
-perror("execve");
-exit(EXIT_FAILURE);
+	ls_path = "/bin/ls";
+
+if (execve(ls_path, args, environ) == -1)
+{
+	fprintf(stderr, "Failed to execute command: %s\n", command);
+	perror("execve");
+	exit(EXIT_FAILURE);
 }
 }
 else
 {
-if (wait(&status) == -1)
-{
-perror("wait");
-exit(EXIT_FAILURE);
+	fprintf(stderr, "Unknown command: %s\n", command);
+            exit(EXIT_FAILURE);
 }
+}
+else
+{
+        if (wait(&status) == -1)
+        {
+            perror("wait");
+            exit(EXIT_FAILURE);
+	}
+
+	
 }
 }
