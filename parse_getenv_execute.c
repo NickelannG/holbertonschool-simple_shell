@@ -9,14 +9,15 @@
 
 void parse_command(char *command, char *args[])
 {
+
+char *delimeter = " \n";
+    char *token;
+    int argc = 0;
+
     if (command == NULL || *command == '\0' || *command == '\n') {
         fprintf(stderr, "Empty command\n");
         return;
     }
-
-    char *delimeter = " \n";
-    char *token;
-    int argc = 0;
 
     token = strtok(command, delimeter);
     if (token == NULL) {
@@ -36,7 +37,7 @@ void parse_command(char *command, char *args[])
         return;
     }
 
-    args[argc] = NULL; // Ensure the args array is properly null-terminated
+    args[argc] = NULL; /* Ensure the args array is properly null-terminated */
 }
 
 /**
@@ -75,7 +76,9 @@ char *_getenv(const char *name)
 
 void execute_command(char *command, char *args[])
 {
+	pid_t pid;
 	extern char **environ;
+
     if (command == NULL)
     {
         return;
@@ -87,7 +90,7 @@ void execute_command(char *command, char *args[])
         return;
     }
 
-    pid_t pid = fork();
+    pid = fork();
     if (pid == -1)
     {
         perror("fork");
@@ -96,7 +99,7 @@ void execute_command(char *command, char *args[])
     else if (pid == 0)
     {
         execve(command, args, environ);
-        // execve only returns if there is an error
+        /* execve only returns if there is an error */
         perror("execve");
         exit(EXIT_FAILURE);
     }
