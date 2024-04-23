@@ -20,11 +20,13 @@ void interactive_mode(void)
 		if (getline(&command, &len, stdin) == -1)
 		{
 			printf("\n");
-			free(command);
 			break;
 		}
 
 		trim_spaces(command);
+
+		if (command == NULL || *command == '\0')
+			continue;
 
 		if (strcmp(command, "exit") == 0)
 		{
@@ -64,8 +66,18 @@ void non_interactive_mode(void)
 	{
 		if (command[read - 1] == '\n')
 			command[read - 1] = '\0';
+
+		if (command == NULL || *command == '\0')
+			continue;
+
+		if (strcmp(command, "exit") == 0)
+		{
+			break;
+		}
+
 		parse_command(command, args);
 		command_path = find_path(args[0]);
+
 		if (command_path != NULL)
 		{
 			execute_command(command_path, args);
@@ -75,8 +87,6 @@ void non_interactive_mode(void)
 		{
 			printf("Command not found: %s\n", args[0]);
 		}
-		free(command);
-		command = NULL;
 	}
 	free(command);
 }
