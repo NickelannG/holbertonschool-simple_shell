@@ -46,8 +46,7 @@ void interactive_mode(void)
 		}
 		else
 		{
-			exit(EXIT_FAILURE);
-			/* break; */
+			continue;
 		}
 	}
 	free(command);
@@ -91,8 +90,8 @@ void non_interactive_mode(void)
 		}
 		else
 		{
-			exit(EXIT_FAILURE);
-			/* break; */
+			/* exit(EXIT_FAILURE); */
+			continue;
 		}
 	}
 	free(command);
