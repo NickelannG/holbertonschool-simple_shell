@@ -13,8 +13,6 @@ void parse_command(char *command, char *args[])
 char *delimeter = " \n";
     char *token;
     int argc = 0;
-    int i;
-    extern char **environ;
 
     trim_spaces(command);
 
@@ -25,12 +23,8 @@ char *delimeter = " \n";
 
     if (strcmp(command, "env") == 0) /* Check if the command is "env" */
     {
-        i = 0;
-        while (environ[i] != NULL)
-        {
-            printf("%s\n", environ[i]);
-            i++;
-        }
+        _printenv();
+	return;
 }
 
     if (strcmp(command, "exit") == 0) /* Check for exit command */
