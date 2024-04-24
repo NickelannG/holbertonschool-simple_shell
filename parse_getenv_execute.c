@@ -83,6 +83,12 @@ char *_getenv(const char *name)
     {
         token = strtok(environ[i], "=");
 
+	if (token == NULL)
+	{
+		fprintf(stderr, "Invalid environment variable format: %s\n", environ[i]);
+		continue;
+	}
+
         if (strcmp(token, name) == 0) /* match */
         {
             token = strtok(NULL, "=");
@@ -137,5 +143,9 @@ void execute_command(char *command, char *args[])
             perror("waitpid");
             exit(EXIT_FAILURE);
         }
+	if (WIFEXITED(status)) 
+	{
+            exit(WEXITSTATUS(status));
+	}
     }
 }

@@ -44,6 +44,7 @@ void interactive_mode(void)
 		else
 		{
 			printf("Command not found: %s\n", args[0]);
+			break;
 		}
 	}
 	free(command);
@@ -86,6 +87,7 @@ void non_interactive_mode(void)
 		else
 		{
 			printf("Command not found: %s\n", args[0]);
+			break;
 		}
 	}
 	free(command);

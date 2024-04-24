@@ -46,7 +46,7 @@ char *find_path(char *command)
         sprintf(full_path, "%s/%s", token, command);
         if (access(full_path, X_OK) == 0)
         {
-            return full_path;
+		return full_path;
         }
         free(full_path);
         token = strtok(NULL, delim);
