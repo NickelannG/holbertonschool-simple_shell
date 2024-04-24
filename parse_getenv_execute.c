@@ -13,6 +13,8 @@ void parse_command(char *command, char *args[])
 char *delimeter = " \n";
     char *token;
     int argc = 0;
+    int i;
+    extern char **environ;
 
     trim_spaces(command);
 
@@ -21,11 +23,21 @@ char *delimeter = " \n";
         return;
     }
 
+    if (strcmp(command, "env") == 0) /* Check if the command is "env" */
+    {
+        i = 0;
+        while (environ[i] != NULL)
+        {
+            printf("%s\n", environ[i]);
+            i++;
+        }
+}
+
     if (strcmp(command, "exit") == 0) /* Check for exit command */
     {
         args[argc++] = command;
         args[argc] = NULL;
-        return;
+        exit(0);
     }
 
     token = strtok(command, delimeter);
@@ -123,7 +135,7 @@ void execute_command(char *command, char *args[])
     {
         return;
     }
-
+		
     if (args[0] == NULL)
     {
         return;
@@ -132,7 +144,7 @@ void execute_command(char *command, char *args[])
     if (access(command, X_OK) == -1)
     {
         fprintf(stderr, "Command not found or not executable: %s\n", command);
-        exit(0);
+        return; /* exit(0); */
     }
 
     pid = fork();
@@ -144,8 +156,8 @@ void execute_command(char *command, char *args[])
     else if (pid == 0)
     {
         execve(command, args, environ);
-        /* execve only returns if there is an error */
-        perror("execve");
+        
+	perror("execve");
         exit(EXIT_FAILURE);
     }
     else
@@ -156,9 +168,12 @@ void execute_command(char *command, char *args[])
             perror("waitpid");
             exit(EXIT_FAILURE);
         }
-	if (WIFEXITED(status)) 
-	{
-            exit(WEXITSTATUS(status));
-	}
+
+	/**
+	 * if (WIFEXITED(status)) 
+	 * {
+	 * exit(WEXITSTATUS(status));
+	 * }
+	 */
     }
 }

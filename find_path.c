@@ -22,7 +22,7 @@ char *find_path(char *command)
         else
         {
             fprintf(stderr, "Command not found or not executable: %s\n", command);
-            return NULL;
+            exit(0);
         }
     }
 

@@ -20,8 +20,7 @@ void interactive_mode(void)
 		if (getline(&command, &len, stdin) == -1)
 		{
 			printf("\n");
-			exit(0);
-			break;
+			exit(1);
 		}
 
 		trim_spaces(command);
@@ -33,7 +32,6 @@ void interactive_mode(void)
 		{
 		  free(command);
 		  exit(EXIT_SUCCESS);
-		  /* break; */
 		}
 
 		parse_command(command, args);
@@ -71,13 +69,12 @@ void non_interactive_mode(void)
 			command[read - 1] = '\0';
 
 		if (command == NULL || *command == '\0')
-			continue;
+			exit(0);
 
 		if (strcmp(command, "exit") == 0)
 		{
 		  free(command);
 		  exit(EXIT_SUCCESS);
-		  /* break; */
 		}
 
 		parse_command(command, args);
@@ -91,7 +88,7 @@ void non_interactive_mode(void)
 		else
 		{
 			/* exit(EXIT_FAILURE); */
-			continue;
+			exit(1);
 		}
 	}
 	free(command);
