@@ -47,6 +47,7 @@ void interactive_mode(void)
 			continue;
 		}
 	}
+	free(command_path);
 	free(command);
 }
 
@@ -91,5 +92,6 @@ void non_interactive_mode(void)
 			exit(1);
 		}
 	}
+	free(command_path);
 	free(command);
 }
