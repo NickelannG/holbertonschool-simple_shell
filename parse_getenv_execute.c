@@ -124,6 +124,12 @@ void execute_command(char *command, char *args[])
         return;
     }
 
+    if (args[0] == NULL)
+    {
+        fprintf(stderr, "No command provided\n");
+        return;
+    }
+
     if (access(command, X_OK) == -1)
     {
         fprintf(stderr, "Command not found or not executable: %s\n", command);
