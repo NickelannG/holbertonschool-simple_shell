@@ -21,8 +21,16 @@ char *delimeter = " \n";
         return;
     }
 
+    if (strcmp(command, "exit") == 0) /* Check for exit command */
+    {
+        args[argc++] = command;
+        args[argc] = NULL;
+        return;
+    }
+
     token = strtok(command, delimeter);
-    if (token == NULL) {
+    if (token == NULL) 
+    {
         fprintf(stderr, "No arguments found in command\n");
         return;
     }
