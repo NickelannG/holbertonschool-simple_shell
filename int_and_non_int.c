@@ -30,7 +30,9 @@ void interactive_mode(void)
 
 		if (strcmp(command, "exit") == 0)
 		{
-			break;
+		  free(command);
+		  exit(EXIT_SUCCESS);
+		  /* break; */
 		}
 
 		parse_command(command, args);
@@ -44,7 +46,8 @@ void interactive_mode(void)
 		else
 		{
 			printf("Command not found: %s\n", args[0]);
-			break;
+			exit(EXIT_FAILURE);
+			/* break; */
 		}
 	}
 	free(command);
@@ -73,7 +76,9 @@ void non_interactive_mode(void)
 
 		if (strcmp(command, "exit") == 0)
 		{
-			break;
+		  free(command);
+		  exit(EXIT_SUCCESS);
+		  /* break; */
 		}
 
 		parse_command(command, args);
@@ -87,7 +92,8 @@ void non_interactive_mode(void)
 		else
 		{
 			printf("Command not found: %s\n", args[0]);
-			break;
+			exit(EXIT_FAILURE);
+			/* break; */
 		}
 	}
 	free(command);
