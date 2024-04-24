@@ -126,7 +126,6 @@ void execute_command(char *command, char *args[])
 
     if (args[0] == NULL)
     {
-        fprintf(stderr, "No command provided\n");
         return;
     }
 
