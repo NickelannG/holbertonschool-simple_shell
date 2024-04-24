@@ -132,7 +132,7 @@ void execute_command(char *command, char *args[])
     if (access(command, X_OK) == -1)
     {
         fprintf(stderr, "Command not found or not executable: %s\n", command);
-        return;
+        exit(0);
     }
 
     pid = fork();
