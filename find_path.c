@@ -51,5 +51,6 @@ char *find_path(char *command)
         free(full_path);
         token = strtok(NULL, delim);
     }
+    free(path);
     return NULL;
 }
