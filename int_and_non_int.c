@@ -20,6 +20,7 @@ void interactive_mode(void)
 		if (getline(&command, &len, stdin) == -1)
 		{
 			printf("\n");
+			exit(0);
 			break;
 		}
 
