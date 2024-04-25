@@ -1,6 +1,7 @@
 #ifndef HEADER_H
 #define HEADER_H
 
+/* libraries */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,9 +10,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+/* global var */
 extern char **environ;
 
-
+/* prototypes */
 char *_getenv(const char *name);
 int execute(char **args);
 char *find_path(char *command);

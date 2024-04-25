@@ -1,7 +1,8 @@
 #include "ssh_header.h"
 /**
  * trim_spaces - trims spaces
- * Return: -
+ * @str: the string to be trimmed
+ * Return: 1
  */
 
 int trim_spaces(char *str)

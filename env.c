@@ -29,7 +29,8 @@ char *_getenv(const char *name)
 }
 
 /**
- * description: prints the environment using the global variable environ
+ * _printenv - description: prints the environment using
+ * the global variable environ
  * main - entry point
  * Return: always 0
  */
