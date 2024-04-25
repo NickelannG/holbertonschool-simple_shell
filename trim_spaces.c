@@ -4,22 +4,14 @@
  * Return: -
  */
 
-int trim_spaces(char *str) {
-    char *end;
+int trim_spaces(char *str)
+{
+	int i;
 
-    while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\r') {
-        str++;
-    }
-
-    if (*str == '\0') {
-      return (1);
-    }
-
-    end = str + strlen(str) - 1;
-    while (end > str && (*end == ' ' || *end == '\t' || *end == '\n' || *end == '\r')) {
-        end--;
-    }
-
-    *(end + 1) = '\0';
-    return (0);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] != ' ')
+			return (0);
+	}
+	return (1);
 }
