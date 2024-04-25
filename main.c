@@ -29,7 +29,7 @@ int main(void)
 		    continue;
 		  }
 
-		if(trim_spaces(command) == -1)
+		if(trim_spaces(command) == 1)
 		  {
 		    exit(0);
 		    continue;
