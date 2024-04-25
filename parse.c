@@ -12,7 +12,7 @@ char **parse(char *str, char *sep)
 	int i = 0;
 
 	aux = strtok(str, sep);
-	split_str = (char **)calloc(100, sizeof(char *));
+	split_str = (char **)_calloc(100, sizeof(char *));
 
 	if (!split_str)
 	{

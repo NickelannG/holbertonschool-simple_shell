@@ -18,5 +18,6 @@ char *find_path(char *command);
 int trim_spaces(char *str);
 void _printenv(void);
 char **parse(char *str, char *sep);
+void *_calloc(unsigned int nmemb, unsigned int size);
 
 #endif
