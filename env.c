@@ -9,7 +9,7 @@
 
 char *_getenv(const char *name)
 {
-  int i = 0, j;
+	int i = 0, j;
 	int status;
 
 	while (environ[i])
@@ -29,10 +29,10 @@ char *_getenv(const char *name)
 }
 
 /**
-* description: prints the environment using the global variable environ
-* main - entry point
-* Return: always 0
-*/
+ * description: prints the environment using the global variable environ
+ * main - entry point
+ * Return: always 0
+ */
 
 void _printenv(void)
 {
@@ -46,3 +46,4 @@ void _printenv(void)
 		env = environ[i];
 	}
 }
+
