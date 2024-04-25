@@ -9,17 +9,14 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#define MAX_COMMAND_LENGTH 100
-
 extern char **environ;
 
-void parse_command(char *command, char *args[]);
+
 char *_getenv(const char *name);
-void execute_command(char *command, char *args[]);
-void interactive_mode(void);
-void non_interactive_mode(void);
+int execute(char **args);
 char *find_path(char *command);
-void trim_spaces(char *str);
+int trim_spaces(char *str);
 void _printenv(void);
+char **parse(char *str, char *sep);
 
 #endif
