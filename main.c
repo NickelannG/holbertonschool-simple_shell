@@ -8,7 +8,7 @@ int main(void)
 {
 	char *command = NULL;
 	char **args;
-	size_t len = 0;
+	size_t len = 1024;
 	ssize_t read = 0;
 	int exit_status = 0;
 	

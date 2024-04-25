@@ -28,9 +28,9 @@ char *find_path(char *command)
 
     while (path_split[i])
     {
-       
-        path_concat = malloc(strlen(path_split[i]) + strlen(command) + 2);
 
+       path_concat = malloc(strlen(path_split[i]) + strlen(command) + 2);
+       
         if (path_concat == NULL)
         {
             perror("Memory allocation error");
