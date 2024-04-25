@@ -10,6 +10,7 @@ int main(void)
 	char **args;
 	size_t len = 0;
 	ssize_t read = 0;
+	int exit_status = 0;
 	
 	while (1)
 	{
@@ -31,7 +32,7 @@ int main(void)
 
 		if(trim_spaces(command) == 1)
 		  {
-		    exit(0);
+		    exit_status = 0;
 		    continue;
 		  }
 
@@ -39,10 +40,10 @@ int main(void)
 		args[0] = find_path(args[0]);
 
 		if(args[0] != NULL)
-		  execute(args);		
+		  exit_status = execute(args);		
 		else
 		  perror("Error");
 		free(args);
 	}
-	return(0);
+	return(exit_status);
 }
