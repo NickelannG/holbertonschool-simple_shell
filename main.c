@@ -30,6 +30,11 @@ int main(void)
 		    continue;
 		  }
 
+		/* if(strcmp("ls", command) == 0)
+		  {
+		    exit_status = execute(args[0]);
+		    } */
+		
 		if(trim_spaces(command) == 1)
 		  {
 		    exit_status = 0;
@@ -40,7 +45,9 @@ int main(void)
 		args[0] = find_path(args[0]);
 
 		if(args[0] != NULL)
-		  exit_status = execute(args);		
+		  {
+		  exit_status = execute(args);
+		  }
 		else
 		  perror("Error");
 		free(args);
