@@ -2,16 +2,19 @@
 
 # Table of Contents
 1. [Description](#description)
-2. [Output](#output)
-3. [List of allowed functions and system calls](#list-of-allowed-functions-and-system-calls)
-4. [Compilation](#Compilation)
-5. [Testing](#testing)
-6. [Checks](#checks)
-7. [Simple Shell Dream Team](#sparkles-simple-shell-dream-team-sparkles)
+2. [Flowchart](#flowchart)
+3. [Output](#output)
+4. [List of allowed functions and system calls](#list-of-allowed-functions-and-system-calls)
+5. [Compilation](#Compilation)
+6. [Testing](#testing)
+7. [Checks](#checks)
+8. [Simple Shell Dream Team](#sparkles-simple-shell-dream-team-sparkles)
 
 ## Description
 This program is a custom implementation of the SHELL command line language interpreter. It was created as part of the final group project for sprint 1 Holberton School Australia Cohort 23.
 
+## Flowchart
+![shellflowchart]([http://url/to/img.png](https://github.com/kdn95/holbertonschool-simple_shell/blob/main/shell_flowchart.png?raw=true))
 ## Output
 - Unless specified otherwise, your program **must have the exact same output as** ```sh (/bin/sh)``` as well as the exact same error output.
 - The only difference is when you print an error, the name of the program must be equivalent to your ```argv[0]``` (See below)
