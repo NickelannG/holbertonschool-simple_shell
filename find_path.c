@@ -5,8 +5,61 @@
  * Return: char
  */
 
-
 char *find_path(char *command)
+{
+    char *path = _getenv("PATH");
+    char *path_cpy, *path_concat = NULL;
+    char **path_split;
+    int i = 0;
+    struct stat info;
+
+    if (stat(command, &info) == 0)
+        return command;
+
+    path_cpy = strdup(path);
+    if (path_cpy == NULL)
+    {
+        perror("Memory allocation error");
+        return NULL;
+    }
+
+    path_split = parse(path_cpy, ":");
+    free(path_cpy);
+
+    while (path_split[i])
+    {
+       
+        path_concat = malloc(strlen(path_split[i]) + strlen(command) + 2);
+
+        if (path_concat == NULL)
+        {
+            perror("Memory allocation error");
+            free(path_split);
+            return NULL;
+        }
+
+        strcpy(path_concat, path_split[i]);
+        strcat(path_concat, "/");
+        strcat(path_concat, command);
+
+        if (stat(path_concat, &info) == 0)
+        {
+           
+            free(path_split);
+            return path_concat;
+        }
+
+        free(path_concat);
+        i++;
+    }
+
+    free(path_split);
+    return NULL;
+}
+
+
+
+/* char *find_path(char *command)
 {
     char *path = _getenv("PATH");
     char *path_cpy;
@@ -64,7 +117,7 @@ char *find_path(char *command)
 
     free(path_cpy);
     return NULL;
-}
+    } */
 
 
 /* char *find_path(char *command)
