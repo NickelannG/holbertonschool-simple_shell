@@ -14,7 +14,7 @@
 This program is a custom implementation of the SHELL command line language interpreter. It was created as part of the final group project for sprint 1 Holberton School Australia Cohort 23.
 
 ## Flowchart
-![shellflowchart](https://github.com/kdn95/holbertonschool-simple_shell/blob/main/shell_flowchart.png?raw=true)
+![shellflowchart](https://github.com/kdn95/holbertonschool-simple_shell/blob/main/Shell%20flowchart.png?raw=true)
 ## Output
 - Unless specified otherwise, your program **must have the exact same output as** ```sh (/bin/sh)``` as well as the exact same error output.
 - The only difference is when you print an error, the name of the program must be equivalent to your ```argv[0]``` (See below)
