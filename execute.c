@@ -8,18 +8,23 @@
 int execute(char **args)
 {
 	int id = fork(), status;
-
+	char *ls_path = "/bin/ls";
+	
 	if (id == 0)
 	{
-		if (execve(args[0], args, environ) == -1)
-			perror("Error");
-	}
-	else
-	{
-		wait(&status);
-		if (WIFEXITED(status))
-			status = WEXITSTATUS(status);
+	  args[0] = ls_path;	      
+	  if (execve(ls_path, args, environ) == -1)
+	    {
+	      perror("Error");
+	    }
 	}
 
+	else
+	    {
+	      wait(&status);
+	      if (WIFEXITED(status))
+		status = WEXITSTATUS(status);
+	    }
+      
 	return (status);
 }
