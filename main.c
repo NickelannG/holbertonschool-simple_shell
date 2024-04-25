@@ -16,9 +16,8 @@ int main(void)
 	        if(isatty(STDIN_FILENO) == 1)
 		   printf("$ ");
 		read = getline(&command, &len, stdin); 
-		if(read == -1 || strcmp("exit", command) == 0)
+		if(read == -1 || strcmp("exit\n", command) == 0)
 		{
-			printf("\n");
 			free(command);
 			break;
 		}

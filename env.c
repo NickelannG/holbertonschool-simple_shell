@@ -9,30 +9,24 @@
 
 char *_getenv(const char *name)
 {
-    extern char **environ;
-    char *token;
-    int i = 0;
+  int i = 0, j;
+	int status;
 
-    while (environ[i] != NULL)
-    {
-        token = strtok(environ[i], "=");
-
-	if (token == NULL)
+	while (environ[i])
 	{
-		fprintf(stderr, "Invalid environment variable format: %s\n", environ[i]);
-		continue;
+		status = 1;
+
+		for (j = 0; environ[i][j] != '='; j++)
+		{
+			if (environ[i][j] != name[j])
+				status = 0;
+		}
+		if (status == 1)
+			break;
+		i++;
 	}
-
-        if (strcmp(token, name) == 0) /* match */
-        {
-            token = strtok(NULL, "=");
-            return token;
-        }
-        i++;
-    }
-    return NULL; /* Variable not found */
+	return (&environ[i][j + 1]);
 }
-
 
 /**
 * description: prints the environment using the global variable environ
