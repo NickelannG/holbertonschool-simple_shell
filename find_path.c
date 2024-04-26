@@ -4,7 +4,7 @@
  * find_path - search file between the path
  * @command: cmd
  * Return: cmd path
-
+*/
 
 char *find_path(char *command)
 {
@@ -46,48 +46,4 @@ char *find_path(char *command)
 
 	free(path_split);
 	return (path_concat);
-}
-*/
-
-char *find_path(char *name)
-{
-	int i = 0;
-	char *cache, *token, *result;
-
-	if (strchr(name, '/') != NULL)
-		return (strdup(name));
-
-	while (environ[i] != NULL)
-	{
-		cache = strdup(environ[i]);
-		token = strtok(cache, "=");
-		if (strcmp(token, "PATH") == 0)
-		{
-			token = strtok(NULL, "=");
-			token = strtok(token, ":");
-			while (token != NULL)
-			{
-				result = malloc(strlen(token) + strlen(name) + 2);
-				if (result == NULL)
-				{
-					perror("Malloc is NULL");
-					return (NULL);
-				}
-				sprintf(result, "%s/%s", token, name);
-				if (access(result, X_OK) == 0)
-				{
-					free(cache);
-					return (result);
-				}
-
-				free(result);
-				token = strtok(NULL, ":");
-			}
-		}
-		free(cache);
-		i++;
-	}
-
-	free(name);
-	return (NULL);
 }
