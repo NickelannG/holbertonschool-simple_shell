@@ -22,10 +22,9 @@ void _printenv(void);
 char **parse(char *str, char *sep);
 void *_calloc(unsigned int nmemb, unsigned int size);
 int _strcmp(char *s1, char *s2);
-char *_strcpy(char *dest, const char *src);
+char *_strcpy(char *dest, char *src);
 char **_split(char *str, char *sep);
 char *_strcat(char *dest, char *src);
-char *_strdup(const char *str);
-int _strlen(const char *s);
+int _strlen(char *s);
 
 #endif
