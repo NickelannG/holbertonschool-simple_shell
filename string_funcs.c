@@ -26,7 +26,7 @@ int _strcmp(char *s1, char *s2)
  * @src: ponter
  * Return: @dest
  */
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, const char *src)
 {
 	char *c = dest;
 
@@ -100,7 +100,7 @@ char *_strcat(char *dest, char *src)
  *
  */
 
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int i = 0;
 
@@ -110,3 +110,19 @@ int _strlen(char *s)
 	return (i);
 }
 
+/**
+ * _strdup - duplicate a string
+ * @str: string to duplicate
+ * Return: pointer to the duplicated string
+ */
+char *_strdup(const char *str)
+{
+    char *duplicate;
+    size_t len = _strlen(str) + 1;
+
+    duplicate = (char *)malloc(len * sizeof(char));
+    if (duplicate == NULL)
+        return NULL;
+
+    return _strcpy(duplicate, str);
+}
